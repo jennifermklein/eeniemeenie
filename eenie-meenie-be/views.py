@@ -113,7 +113,7 @@ def rank(request):
     temp_rank = user.name_ranking
 
     if (name2 not in temp_rank):
-        temp_rank.insert(0, name2)
+        temp_rank.append(name2)
     if (name1 not in temp_rank):
         name2_idx = temp_rank.index(name2)
         temp_rank.insert(name2_idx, name1)

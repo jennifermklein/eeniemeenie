@@ -23,12 +23,5 @@ for file in files:
             nameDict[year][gender].append(name)
             line = data.readline()
 
-# print(nameDict)
-# with open("eenie_meenie/namesDict.py", "w") as data:
-#     data.write("nameDict = " + str(nameDict))
-
-# with open('eenie_meenie/namesDict.py', 'w') as convert_file:
-#      convert_file.write(json.dumps(nameDict))
-
 with open('eenie_meenie/namesDict.py', 'w') as f: 
     json.dump(nameDict, f) 
