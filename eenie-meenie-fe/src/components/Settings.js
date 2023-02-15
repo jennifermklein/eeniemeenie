@@ -142,16 +142,16 @@ const Settings = () => {
           <FormControl id="gender">
             <FormLabel mb={6}>...usually given to:</FormLabel>
             <RadioGroup onChange={(val) => setGender(val)} value={gender}>
-              <Flex direction="row" justifyContent={"space-between"}>
+              <Flex direction="row" justifyContent={"space-evenly"}>
                 <Radio value="M" colorScheme="blue">
                   Boys
                 </Radio>
                 <Radio value="F" colorScheme="pink">
                   Girls
                 </Radio>
-                <Radio value="N" colorScheme="green">
+                {/* <Radio value="N" colorScheme="green">
                   Anyone
-                </Radio>
+                </Radio> */}
               </Flex>
             </RadioGroup>
           </FormControl>

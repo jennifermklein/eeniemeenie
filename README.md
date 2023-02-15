@@ -2,11 +2,16 @@
 
 ## How to run
 
-From the root directory, run `python manage.py runserver`
+To set up your environment:
 
-From the eenie-meenie-fe directory, run `npm start`
+- activate a virtual environment and run `pip -install -r requirements.txt`
+- From within the eenie-meenie-fe directory, run `npm install`.
 
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+To start the app:
+
+- From the root directory, run `python manage.py runserver` to run the backend server
+- From the eenie-meenie-fe directory, run `npm start` to run the frontend server
+- Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ## Distinctiveness and Complexity
 
@@ -28,9 +33,9 @@ The app uses a PostgreSQL database rather than the built in SQLite database. I s
 
 The app uses naming data from the Social Security Administration going back to 1880. I wrote a script to convert the .txt files provided by the SSA (one file per year) into a python dictionary. When a user sets or updates her settings to determine the pool of names she will choose from, the API accesses the appropriate year and gender from the dictionary, and slices the names within the selected popularity percentiles.
 
-## Files
+## Key Files
 
-**Backend (eenie-meenie-be)**
+**Backend (eenie_meenie)**
 
 - models.py
 - serializers.py
