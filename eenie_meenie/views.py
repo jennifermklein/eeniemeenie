@@ -130,7 +130,7 @@ def rank(request):
 
     return JsonResponse({"message": "name rank updated"}, status=201)
 
-@api_view(['GET'])
+@api_view(['POST'])
 def partner(request):
     try: 
         token = Token.objects.get(key=request.auth.key)
@@ -141,6 +141,7 @@ def partner(request):
         return JsonResponse({"message": "No token provided."}, status=200)
 
     user = User.objects.get(pk=request.user.id)
+    # TO DO: add partner to user
 
     return Response(user.partner)
 

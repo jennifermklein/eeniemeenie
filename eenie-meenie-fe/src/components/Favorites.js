@@ -23,16 +23,30 @@ const Favorites = () => {
     fetchFavorites();
   }, []);
 
-  if (fetching) {
-    return <Spinner />;
-  }
+  // if (fetching) {
+  //   return <Spinner />;
+  // }
 
   return (
     <Stack mx={"auto"} maxW={"lg"} minH={"xl"} p={6} align="center" spacing={8}>
       <Heading fontSize={"3xl"}>Your Favorite Names</Heading>
       <Stack align="center" spacing={4} fontSize={"lg"}>
-        {favorites.length ? (
-          favorites.map((name) => <Text key={name}>{name}</Text>)
+        {fetching ? (
+          <Spinner />
+        ) : favorites.length ? (
+          favorites.map((name) => (
+            <Text
+              fontSize={"2xl"}
+              color={"white"}
+              p={2}
+              minW={"xs"}
+              rounded={"lg"}
+              bg={"teal.400"}
+              key={name}
+            >
+              {name}
+            </Text>
+          ))
         ) : (
           <Text>No favorites yet</Text>
         )}

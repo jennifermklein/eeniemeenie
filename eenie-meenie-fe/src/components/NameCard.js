@@ -5,8 +5,8 @@ import { Text, Square } from "@chakra-ui/react";
 const NameCard = ({ name, onClick }) => {
   return (
     <Square
-      background="green.200"
-      color="gray.800"
+      background="teal.500"
+      color="gray.100"
       minW={[24, 36, 48]}
       h={[28, 36]}
       p={["2", "8"]}
@@ -14,7 +14,7 @@ const NameCard = ({ name, onClick }) => {
       onClick={() => onClick(name)}
       _hover={{
         cursor: "pointer",
-        background: "green.300",
+        background: "teal.400",
         transform: "scale(1.05)",
       }}
     >

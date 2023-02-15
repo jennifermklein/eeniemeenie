@@ -59,10 +59,6 @@ const Play = () => {
     }
   };
 
-  // if (fetching) {
-  //   return <Spinner />;
-  // }
-
   return (
     <Stack
       mx={"auto"}

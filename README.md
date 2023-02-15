@@ -7,6 +7,10 @@ To set up your environment:
 - activate a virtual environment and run `pip -install -r requirements.txt`
 - From within the eenie-meenie-fe directory, run `npm install`.
 
+Set up the database:
+
+- In psql, run `createdb eenie_meenie`
+
 To start the app:
 
 - From the root directory, run `python manage.py runserver` to run the backend server
