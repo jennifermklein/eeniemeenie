@@ -8,13 +8,14 @@ const NameList = ({ names, color = "teal.500" }) => {
       {names.length ? (
         names.map((name) => (
           <Text
-            fontSize={["md", "xl", "2xl"]}
+            fontSize={["lg", "xl", "2xl"]}
             color={"white"}
-            fontWeight={"bold"}
+            fontWeight={"medium"}
+            boxShadow={"md"}
             border={"2px solid white"}
             paddingY={2}
             paddingX={5}
-            minW={["32", "48", "xs"]}
+            minW={["48", "64", "xs"]}
             rounded={"lg"}
             bg={color}
             key={name}

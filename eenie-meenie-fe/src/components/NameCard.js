@@ -6,10 +6,11 @@ const NameCard = ({ name, onClick }) => {
   return (
     <Square
       background="teal.400"
-      color="yellow.200"
+      color="yellow.50"
       border="white 3px solid"
-      width={[32, 36, 48]}
-      h={[28, 36, 48]}
+      boxShadow={"lg"}
+      width={[32, 48, 56]}
+      h={[36, 56, 64]}
       p={["2", "8"]}
       rounded={"lg"}
       onClick={() => onClick(name)}

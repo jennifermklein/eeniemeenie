@@ -25,8 +25,18 @@ const Favorites = () => {
   }, []);
 
   return (
-    <Stack mx={"auto"} maxW={"lg"} minH={"xl"} mt={"8"} p={6} spacing={8}>
-      <Heading fontSize={"3xl"}>Your Favorite Names</Heading>
+    <Stack
+      mx={"auto"}
+      textAlign={"center"}
+      maxW={"lg"}
+      minH={"xl"}
+      mt={[0, 4, 8]}
+      p={6}
+      spacing={[4, 8]}
+    >
+      <Heading fontSize={["2xl", "3xl"]} color={"gray.800"}>
+        Your Favorite Names
+      </Heading>
       {fetching ? <Spinner /> : <NameList names={favorites} />}
     </Stack>
   );

@@ -54,7 +54,7 @@ const Partner = () => {
       <SelectPartner users={users} onChange={selectPartner} />
       <Flex gap={[2, 4, 16]} direction={["column", "row"]} textAlign={"center"}>
         <Stack>
-          <Heading fontSize={["2xl", "2xl", "3xl"]}>
+          <Heading fontSize={"2xl"} whiteSpace={"nowrap"} color={"gray.800"}>
             {partner.username}'s favorites
           </Heading>
           {fetching ? (
@@ -64,7 +64,9 @@ const Partner = () => {
           )}
         </Stack>
         <Stack>
-          <Heading fontSize={["2xl", "2xl", "3xl"]}>You both love...</Heading>
+          <Heading fontSize={"2xl"} color={"gray.800"}>
+            You both love...
+          </Heading>
           <NameList
             names={partner.name_ranking
               .filter((name) => favorites.includes(name))

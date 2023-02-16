@@ -24,7 +24,12 @@ const Nav = ({ authenticated, setIsLoggedIn }) => {
         </Text>
       </Flex>
       {authenticated && (
-        <Flex direction={["column", "row"]} align={"center"} gap={[1, 6]}>
+        <Flex
+          direction={["column", "row"]}
+          align={"center"}
+          gap={[0, 2, 6]}
+          fontSize={["sm", "md", "lg"]}
+        >
           <Link to={"/"}>Play</Link>
           <Link to={"/favorites"}>Favorites</Link>
           <Link to={"/partner"}>Partner</Link>
