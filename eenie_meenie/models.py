@@ -20,7 +20,7 @@ class Setting(models.Model):
     set = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
-        self.set = bool(self.year) and bool(self.gender) and (bool(self.min_popularity_percent) or self.min_popularity_percent == 0) and bool(self.max_popularity_percent)
+        self.set = bool(self.year) and bool(self.gender) and (bool(self.min_popularity_percent) or self.min_popularity_percent == 0) and (bool(self.max_popularity_percent) or self.max_popularity_percent == 0)
         super(Setting, self).save(*args, **kwargs)
 
     def __str__(self):

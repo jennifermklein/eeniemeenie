@@ -43,25 +43,34 @@ def settings(request):
         user.settings = Setting(year=year, gender=gender, min_popularity_percent=min_popularity_percent, max_popularity_percent=max_popularity_percent)
         user.settings.save()
 
+        print('SETTINGS', user.settings)
+
         # Populate name pool from dictionary by year, gender, popularity range
         if (year in nameDict and gender in nameDict[year]):
             names = nameDict[year][gender]
             num_names = len(names)
+            print(num_names)
             minIdx = int(num_names - (max_popularity_percent * num_names / 100))
             maxIdx = int(num_names - (min_popularity_percent * num_names / 100))
+            print(minIdx, maxIdx)
             if (maxIdx == minIdx and minIdx < num_names):
-                maxIdx = maxIdx + 1
+                maxIdx = maxIdx + 10
             elif (maxIdx == minIdx and maxIdx > 0):
-                minIdx = maxIdx - 1
+                minIdx = maxIdx - 10
+
+            print(minIdx, maxIdx)
 
             names = names[minIdx:maxIdx]
+            print(names)
             user.name_pool = names
         else:
             user.name_pool = ['Jenny', 'Ben', 'Leo', 'Jay', 'Mindy', 'Steve', 'Andrew', 'Nicky', "Scott", "Desi", "Raya"]
 
     user.save()
+    print('saved user')
 
     serializer = SettingsSerializer(user.settings, context={'request': request})
+    print(serializer.data)
     return Response(serializer.data)
 
 @api_view(['GET'])
