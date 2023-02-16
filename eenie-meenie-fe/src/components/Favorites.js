@@ -14,7 +14,7 @@ const Favorites = () => {
       setFetching(true);
       try {
         const { data } = await axios.get(`/curr_user`);
-        setFavorites(data.name_ranking.slice(0, 10));
+        setFavorites(data.name_ranking);
       } catch (error) {
         console.log(error);
       }
@@ -23,6 +23,11 @@ const Favorites = () => {
 
     fetchFavorites();
   }, []);
+
+  const deleteName = async (name) => {
+    await axios.post(`delete/${name}`);
+    setFavorites(favorites.filter((fav) => fav !== name));
+  };
 
   return (
     <Stack
@@ -37,7 +42,11 @@ const Favorites = () => {
       <Heading fontSize={["2xl", "3xl"]} color={"gray.800"}>
         Your Favorite Names
       </Heading>
-      {fetching ? <Spinner /> : <NameList names={favorites} />}
+      {fetching ? (
+        <Spinner />
+      ) : (
+        <NameList names={favorites.slice(0, 10)} onClick={deleteName} />
+      )}
     </Stack>
   );
 };

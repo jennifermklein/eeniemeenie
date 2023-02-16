@@ -145,6 +145,26 @@ def partner(request):
     serializer = UserSerializer(user.partner, context={'request': request})
     return Response(serializer.data)
 
+@api_view(['POST'])
+def delete(request, name):
+    user = get_user_from_token(request.auth.key)
+    if not user:
+        return JsonResponse({"message": "No user found."}, status=400)
+
+    try:
+        user.name_ranking.remove(name)
+    except ValueError:
+        pass
+
+    try:
+        user.name_pool.remove(name)
+    except ValueError:
+        pass
+    
+    user.save()
+
+    return JsonResponse({"message": "name removed"}, status=201)
+
 @csrf_exempt
 def login_view(request):
     if request.method == "POST":
