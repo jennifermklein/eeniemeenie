@@ -2,34 +2,37 @@ import React, { useEffect, useState } from "react";
 
 import axios from "../util/axios";
 
-import { Stack, Heading, Spinner, Text, Select } from "@chakra-ui/react";
+import { Stack, Heading, Spinner, Select } from "@chakra-ui/react";
+import NameList from "./NameList";
 
 const Partner = () => {
   const [fetching, setFetching] = useState(false);
-  const [currUser, setCurrUser] = useState("");
   const [users, setUsers] = useState([]);
   const [partner, setPartner] = useState(null);
+  const [favorites, setFavorites] = useState([]);
 
-  const selectPartner = (partner) => {
-    // post request to set partner
-    // fetch partner's favorite names
-    console.log(partner);
-    // setPartner("test");
+  const selectPartner = async (partnerId) => {
+    console.log(partnerId);
+    const { data } = await axios.post("/partner", { partner_id: partnerId });
+    setPartner(data);
   };
 
   useEffect(() => {
     const fetchFavorites = async () => {
       setFetching(true);
       try {
-        const { data } = await axios.get("/user");
-        setCurrUser(data.username);
-        if (data.partner) {
-          // fetch partner's name and favorites
+        const { data } = await axios.get("/curr_user");
+        const { partner } = data;
+
+        if (partner) {
+          // fetch partner
+          const { data } = await axios.get(`/user/${partner}`);
+          setPartner(data);
+          setFavorites(data.name_ranking.slice(0, 10));
         } else {
-          // fetch all users
+          // else fetch all users to select from
           const { data } = await axios.get("/users");
           setUsers(data);
-          // to do: exclude current user
         }
       } catch (error) {
         console.log(error);
@@ -76,14 +79,8 @@ const Partner = () => {
 
   return (
     <Stack mx={"auto"} maxW={"lg"} minH={"xl"} p={6} align="center" spacing={8}>
-      <Heading fontSize={"3xl"}>Your Partner</Heading>
-      <Stack align="center" spacing={4} fontSize={"lg"}>
-        {/* {favorites.length ? (
-          favorites.map((name) => <Text key={name}>{name}</Text>)
-        ) : (
-          <Text>No favorites yet</Text>
-        )} */}
-      </Stack>
+      <Heading fontSize={"3xl"}>Your Partner's Favorite Names</Heading>
+      {fetching ? <Spinner /> : <NameList names={favorites} />}
     </Stack>
   );
 };

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import axios from "../util/axios";
 
-import { Stack, Heading, Spinner, Text } from "@chakra-ui/react";
+import { Stack, Heading, Spinner } from "@chakra-ui/react";
+import NameList from "./NameList";
 
 const Favorites = () => {
   const [fetching, setFetching] = useState(false);
@@ -12,7 +13,7 @@ const Favorites = () => {
     const fetchFavorites = async () => {
       setFetching(true);
       try {
-        const { data } = await axios.get(`/user`);
+        const { data } = await axios.get(`/curr_user`);
         setFavorites(data.name_ranking.slice(0, 10));
       } catch (error) {
         console.log(error);
@@ -23,34 +24,10 @@ const Favorites = () => {
     fetchFavorites();
   }, []);
 
-  // if (fetching) {
-  //   return <Spinner />;
-  // }
-
   return (
     <Stack mx={"auto"} maxW={"lg"} minH={"xl"} p={6} align="center" spacing={8}>
       <Heading fontSize={"3xl"}>Your Favorite Names</Heading>
-      <Stack align="center" spacing={4} fontSize={"lg"}>
-        {fetching ? (
-          <Spinner />
-        ) : favorites.length ? (
-          favorites.map((name) => (
-            <Text
-              fontSize={"2xl"}
-              color={"white"}
-              p={2}
-              minW={"xs"}
-              rounded={"lg"}
-              bg={"teal.400"}
-              key={name}
-            >
-              {name}
-            </Text>
-          ))
-        ) : (
-          <Text>No favorites yet</Text>
-        )}
-      </Stack>
+      {fetching ? <Spinner /> : <NameList names={favorites} />}
     </Stack>
   );
 };

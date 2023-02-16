@@ -20,8 +20,10 @@ def index(request):
 
 @api_view(['GET'])
 def users(request):
-    data = User.objects.all()
+    user = get_user_from_token(request.auth.key)
+    data = User.objects.exclude(id=user.id)
     serializer = UserSerializer(data, context={'request': request}, many=True)
+
     return Response(serializer.data)
 
 @api_view(['GET', 'POST'])
@@ -63,12 +65,20 @@ def settings(request):
     return Response(serializer.data)
 
 @api_view(['GET'])
-def user(request):
+def curr_user(request):
     user = get_user_from_token(request.auth.key)
     if not user:
         return JsonResponse({"message": "No user found."}, status=400)
 
-    user = User.objects.get(pk=request.user.id)
+    serializer = UserSerializer(user, context={'request': request})
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def user(request, user_id):
+    user = User.objects.get(id=user_id)
+    if not user:
+        return JsonResponse({"message": "No user found."}, status=400)
+
     serializer = UserSerializer(user, context={'request': request})
     return Response(serializer.data)
 
@@ -78,8 +88,6 @@ def choices(request):
     if not user:
         return JsonResponse({"message": "No user found."}, status=400)
 
-    user = User.objects.get(pk=request.user.id)
-
     return Response(sample(user.name_pool, 2))
 
 @api_view(['POST'])
@@ -88,7 +96,6 @@ def rank(request):
     if not user:
         return JsonResponse({"message": "No user found."}, status=400)
 
-    user = User.objects.get(pk=request.user.id)
     data = json.loads(request.body)
     name1 = data.get("name1")
     name2 = data.get("name2")
@@ -119,10 +126,15 @@ def partner(request):
     if not user:
         return JsonResponse({"message": "No user found."}, status=400)
 
-    user = User.objects.get(pk=request.user.id)
     # TO DO: add partner to user
+    data = json.loads(request.body)
+    partner_id = data.get("partner_id")
+    partner = User.objects.get(id=partner_id)
+    user.partner = partner
+    user.save()
 
-    return Response(user.partner)
+    serializer = UserSerializer(user.partner, context={'request': request})
+    return Response(serializer.data)
 
 @csrf_exempt
 def login_view(request):
