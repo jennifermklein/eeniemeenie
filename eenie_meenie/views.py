@@ -26,13 +26,9 @@ def users(request):
 
 @api_view(['GET', 'POST'])
 def settings(request):
-    try: 
-        token = Token.objects.get(key=request.auth.key)
-        user = token.user
-        if not user:
-            return JsonResponse({"message": "No user to fetch settings."}, status=200)
-    except AttributeError:
-        return JsonResponse({"message": "No token provided to fetch settings."}, status=200)
+    user = get_user_from_token(request.auth.key)
+    if not user:
+        return JsonResponse({"message": "No user found."}, status=400)
     
     if request.method == 'POST':
         data = json.loads(request.body)
@@ -68,13 +64,9 @@ def settings(request):
 
 @api_view(['GET'])
 def user(request):
-    try: 
-        token = Token.objects.get(key=request.auth.key)
-        user = token.user
-        if not user:
-            return JsonResponse({"message": "No user found."}, status=200)
-    except AttributeError:
-        return JsonResponse({"message": "No token provided."}, status=200)
+    user = get_user_from_token(request.auth.key)
+    if not user:
+        return JsonResponse({"message": "No user found."}, status=400)
 
     user = User.objects.get(pk=request.user.id)
     serializer = UserSerializer(user, context={'request': request})
@@ -82,14 +74,9 @@ def user(request):
 
 @api_view(['GET'])
 def choices(request):
-    # TO DO: create decorator function for all functions that require a token
-    try: 
-        token = Token.objects.get(key=request.auth.key)
-        user = token.user
-        if not user:
-             return JsonResponse({"message": "No user found."}, status=200)
-    except AttributeError:
-        return JsonResponse({"message": "No token provided."}, status=200)
+    user = get_user_from_token(request.auth.key)
+    if not user:
+        return JsonResponse({"message": "No user found."}, status=400)
 
     user = User.objects.get(pk=request.user.id)
 
@@ -97,13 +84,9 @@ def choices(request):
 
 @api_view(['POST'])
 def rank(request):
-    try: 
-        token = Token.objects.get(key=request.auth.key)
-        user = token.user
-        if not user:
-            return JsonResponse({"message": "No user found."}, status=200)
-    except AttributeError:
-        return JsonResponse({"message": "No token provided."}, status=200)
+    user = get_user_from_token(request.auth.key)
+    if not user:
+        return JsonResponse({"message": "No user found."}, status=400)
 
     user = User.objects.get(pk=request.user.id)
     data = json.loads(request.body)
@@ -132,13 +115,9 @@ def rank(request):
 
 @api_view(['POST'])
 def partner(request):
-    try: 
-        token = Token.objects.get(key=request.auth.key)
-        user = token.user
-        if not user:
-             return JsonResponse({"message": "No user found."}, status=200)
-    except AttributeError:
-        return JsonResponse({"message": "No token provided."}, status=200)
+    user = get_user_from_token(request.auth.key)
+    if not user:
+        return JsonResponse({"message": "No user found."}, status=400)
 
     user = User.objects.get(pk=request.user.id)
     # TO DO: add partner to user
@@ -157,7 +136,7 @@ def login_view(request):
         # Check if authentication successful
         if user is not None:
             login(request, user)
-            token, created = Token.objects.get_or_create(user=user)
+            token, _ = Token.objects.get_or_create(user=user)
             return JsonResponse({"message": "User logged in.", "token": token.key}, status=201)
         else:
             return HttpResponse("Invalid username and/or password.")
@@ -187,3 +166,10 @@ def register(request):
         return JsonResponse({"message": "User successfully registered.", "token": token.key}, status=201)
     else:
         return JsonResponse({"error": "Post request required."}, status=400)
+
+def get_user_from_token(key):
+    try: 
+        token = Token.objects.get(key=key)
+        return token.user
+    except AttributeError:
+        return None

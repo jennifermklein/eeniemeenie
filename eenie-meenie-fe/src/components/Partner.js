@@ -10,10 +10,11 @@ const Partner = () => {
   const [users, setUsers] = useState([]);
   const [partner, setPartner] = useState(null);
 
-  const selectPartner = () => {
+  const selectPartner = (partner) => {
     // post request to set partner
     // fetch partner's favorite names
-    setPartner("test");
+    console.log(partner);
+    // setPartner("test");
   };
 
   useEffect(() => {
@@ -27,11 +28,8 @@ const Partner = () => {
         } else {
           // fetch all users
           const { data } = await axios.get("/users");
-
-          // const usernames = data
-          //   .map((user) => user.username)
-          //   .filter((user) => user !== currUser);
-          setUsers(data.filter((user) => user.username !== currUser));
+          setUsers(data);
+          // to do: exclude current user
         }
       } catch (error) {
         console.log(error);
@@ -64,6 +62,7 @@ const Partner = () => {
           variant="filled"
           borderColor={"teal"}
           bg={"white"}
+          onChange={(e) => selectPartner(e.target.value)}
         >
           {users.map((user) => (
             <option key={user.username} value={user.id}>
