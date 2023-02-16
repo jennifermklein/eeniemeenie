@@ -68,7 +68,7 @@ const Play = () => {
       align="center"
       spacing={10}
     >
-      <Heading fontSize={["2xl", "4xl"]}>Eenie Meenie</Heading>
+      <Heading fontSize={["2xl", "3xl"]}>Choose your favorite name</Heading>
       <Flex mx={"auto"} gap={[2, 4]} align={"center"} justifyContent={"center"}>
         <NameCard name={choices[0]} onClick={choose} />
         <NameCard name={choices[1]} onClick={choose} />

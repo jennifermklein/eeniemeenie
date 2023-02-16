@@ -13,6 +13,7 @@ const NameCard = ({ name, onClick }) => {
       h={[36, 56, 64]}
       p={["2", "8"]}
       rounded={"lg"}
+      fontFamily="mono"
       onClick={() => onClick(name)}
       _hover={{
         cursor: "pointer",
