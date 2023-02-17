@@ -9,7 +9,7 @@ const NameCard = ({ name, onClick }) => {
       color="white"
       border="white 3px solid"
       boxShadow={"lg"}
-      width={[32, 48, 56]}
+      width={[32, 48, 64]}
       h={[36, 56, 64]}
       p={["2", "8"]}
       rounded={"lg"}

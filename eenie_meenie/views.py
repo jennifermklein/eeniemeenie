@@ -1,8 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 from django.http import JsonResponse, HttpResponse
-from django.shortcuts import render
-from django.views.generic import ListView
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
@@ -43,8 +41,6 @@ def settings(request):
         user.settings = Setting(year=year, gender=gender, min_popularity_percent=min_popularity_percent, max_popularity_percent=max_popularity_percent)
         user.settings.save()
 
-        print('SETTINGS', user.settings)
-
         # Populate name pool from dictionary by year, gender, popularity range
         if (year in nameDict and gender in nameDict[year]):
             names = nameDict[year][gender]
@@ -68,7 +64,6 @@ def settings(request):
     user.save()
 
     serializer = SettingsSerializer(user.settings, context={'request': request})
-    print(serializer.data)
     return Response(serializer.data)
 
 @api_view(['GET'])
@@ -133,7 +128,7 @@ def partner(request):
     if not user:
         return JsonResponse({"message": "No user found."}, status=400)
 
-    # TO DO: add partner to user
+    # Add partner to user
     data = json.loads(request.body)
     partner_id = data.get("partner_id")
     partner = User.objects.get(id=partner_id)
