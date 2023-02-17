@@ -57,6 +57,10 @@ def settings(request):
                 minIdx = maxIdx - int(num_names * .01)
 
             names = names[minIdx:maxIdx]
+
+            # include names that have already been ranked so user can compare to new names
+            names.extend(name for name in user.name_ranking if name not in names)
+
             user.name_pool = names
         else:
             user.name_pool = ['Jenny', 'Ben', 'Leo', 'Jay', 'Mindy', 'Steve', 'Andrew', 'Nicky', 'Scott', 'Desi', 'Raya']
@@ -150,7 +154,8 @@ def delete(request, name):
         pass
 
     try:
-        user.name_pool.remove(name)
+        if (len(user.name_pool) > 2):
+            user.name_pool.remove(name)
     except ValueError:
         pass
     
