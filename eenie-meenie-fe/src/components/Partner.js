@@ -69,8 +69,8 @@ const Partner = () => {
               You both love...
             </Heading>
             <NameList
-              names={partner.name_ranking
-                .filter((name) => favorites.includes(name))
+              names={favorites
+                .filter((name) => partner.name_ranking.includes(name))
                 .slice(0, 10)}
               color={"purple.500"}
             />

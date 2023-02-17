@@ -10,14 +10,12 @@ import NameCard from "./NameCard";
 const Play = () => {
   const navigate = useNavigate();
 
-  const [fetching, setFetching] = useState(false);
   const [choices, setChoices] = useState([]);
 
   // if user hasn't yet picked settings, redirect
   // otherwise start playing
   useEffect(() => {
     const fetchSettings = async () => {
-      setFetching(true);
       try {
         const { data } = await axios.get(`/settings`);
         if (!data.set) {
@@ -30,15 +28,12 @@ const Play = () => {
       } catch (error) {
         console.log(error);
       }
-      setFetching(false);
     };
 
     fetchSettings();
   }, []);
 
   const choose = async (name) => {
-    setFetching(true);
-
     // get new choices
     try {
       const { data } = await axios.get("/choices");
@@ -46,7 +41,6 @@ const Play = () => {
     } catch (error) {
       console.log(error);
     }
-    setFetching(false);
 
     // update ranking
     try {
@@ -64,11 +58,13 @@ const Play = () => {
       mx={"auto"}
       maxW={"lg"}
       minH={"xl"}
-      p={6}
+      p={[12, 6]}
       align="center"
-      spacing={10}
+      spacing={[4, 8]}
     >
-      <Heading fontSize={["2xl", "3xl"]}>Choose your favorite name</Heading>
+      <Heading fontSize={["xl", "2xl", "3xl"]} textAlign="center">
+        Choose your favorite name
+      </Heading>
       <Flex mx={"auto"} gap={[2, 4]} align={"center"} justifyContent={"center"}>
         <NameCard name={choices[0]} onClick={choose} />
         <NameCard name={choices[1]} onClick={choose} />
