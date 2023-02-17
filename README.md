@@ -25,7 +25,7 @@ To start the app:
 
 Eenie Meenie helps expecting parents choose a name for their baby.
 
-The app was built with Django for the backend and React and Chakra for the frontend. Using React added complexity to the project because it required a separate server and integration between the front and backend that would have been automatic with Django and vanilla javascript. Chakra was helpful for easily creating nice looking and mobile-responsive components.
+The app was built with Django for the backend and React and Chakra for the frontend. Using React added complexity to the project because it required a separate server and integration between the front and backend that would have been automatic with Django and vanilla javascript. Chakra was helpful for easily creating nice looking and mobile-responsive components. <img align="right" src='/eenie-meenie-fe/public/mobile.png' width='250'>
 
 **Authentication**
 
