@@ -49,25 +49,23 @@ def settings(request):
         if (year in nameDict and gender in nameDict[year]):
             names = nameDict[year][gender]
             num_names = len(names)
-            print(num_names)
+
+            # get slice of names based on selected popularity ranges
             minIdx = int(num_names - (max_popularity_percent * num_names / 100))
             maxIdx = int(num_names - (min_popularity_percent * num_names / 100))
-            print(minIdx, maxIdx)
+            
+            # if the range is too small, show 1% of names
             if (maxIdx == minIdx and minIdx < num_names):
-                maxIdx = maxIdx + 10
+                maxIdx = maxIdx + int(num_names * .01)
             elif (maxIdx == minIdx and maxIdx > 0):
-                minIdx = maxIdx - 10
-
-            print(minIdx, maxIdx)
+                minIdx = maxIdx - int(num_names * .01)
 
             names = names[minIdx:maxIdx]
-            print(names)
             user.name_pool = names
         else:
-            user.name_pool = ['Jenny', 'Ben', 'Leo', 'Jay', 'Mindy', 'Steve', 'Andrew', 'Nicky', "Scott", "Desi", "Raya"]
+            user.name_pool = ['Jenny', 'Ben', 'Leo', 'Jay', 'Mindy', 'Steve', 'Andrew', 'Nicky', 'Scott', 'Desi', 'Raya']
 
     user.save()
-    print('saved user')
 
     serializer = SettingsSerializer(user.settings, context={'request': request})
     print(serializer.data)
