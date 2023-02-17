@@ -42,23 +42,24 @@ The app uses naming data from the Social Security Administration going back to 1
 **Features**
 
 Users can create a new account and login.
-<img src='/eenie-meenie-fe/public/signin.png' width='250'>
+
+<img align="center" src='/eenie-meenie-fe/public/signin.png' width='250'>
 
 The user is automatically prompted to enter their name preference settings. Specifically, they are asked to provide a year in which a set of names was popular, the gender with which the names are usually associated, and a popularity percentile range. The user can update their settings at any time.
 
-<img src='/eenie-meenie-fe/public/settings.png' width='250'>
+<img align="center" src='/eenie-meenie-fe/public/settings.png' width='250'>
 
 After submitting settings, the user is taking to the "play" page in which they are presented with two names. The user clicks on their preferred name is is presented with two more names for as long as they continue to choose. As the user chooses names from a pair, the user's name ranking is continually updated on the backend.
 
-<img src='/eenie-meenie-fe/public/play.png' width='250'>
+<img align="center" src='/eenie-meenie-fe/public/play.png' width='250'>
 
 At any point the user can navigate to the favorites page to see their top-10 ranked names. On the favorites page, the user can remove any names they want to exclude from their list. These names will not show up again when playing unless the user updates their settings.
 
-<img src='/eenie-meenie-fe/public/favorites.png' width='250'>
+<img align="center" src='/eenie-meenie-fe/public/favorites.png' width='250'>
 
 The user can also select a partner with whom they can compare their name choices. The user can navigate to the partner page and then select a partner from a drop down menu. The user will then see their partner's top-10 names and names that overlap on both user's lists. The user can update their partner at any time.
 
-<img src='/eenie-meenie-fe/public/partner.png' width='250'>
+<img align="center" src='/eenie-meenie-fe/public/partner.png' width='250'>
 
 ## Key Files
 
