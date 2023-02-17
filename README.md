@@ -41,7 +41,13 @@ The app uses naming data from the Social Security Administration going back to 1
 
 **Features**
 
-<img align="right" src='/eenie-meenie-fe/public/signin.png' width='250'><img align="right" src='/eenie-meenie-fe/public/settings.png' width='250'>Users can create a new account and login. The user is automatically prompted to enter their name preference settings. Specifically, they are asked to provide a year in which a set of names was popular, the gender with which the names are usually associated, and a popularity percentile range. The user can update their settings at any time.
+Users can create a new account and login.
+
+<img align="right" src='/eenie-meenie-fe/public/signin.png' width='250'>
+
+The user is automatically prompted to enter their name preference settings. Specifically, they are asked to provide a year in which a set of names was popular, the gender with which the names are usually associated, and a popularity percentile range. The user can update their settings at any time.
+
+<img align="right" src='/eenie-meenie-fe/public/settings.png' width='250'>
 
 <img align="left" src='/eenie-meenie-fe/public/play.png' width='250'>After submitting settings, the user is taking to the "play" page in which they are presented with two names. The user clicks on their preferred name is is presented with two more names for as long as they continue to choose. As the user chooses names from a pair, the user's name ranking is continually updated on the backend.
 
