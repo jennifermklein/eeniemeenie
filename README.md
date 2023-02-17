@@ -41,13 +41,9 @@ The app uses naming data from the Social Security Administration going back to 1
 
 **Features**
 
-<img align="left" src='/eenie-meenie-fe/public/signin.png' width='250'>Users can create a new account and login. The user is automatically prompted to enter their name preference settings. Specifically, they are asked to provide a year in which a set of names was popular, the gender with which the names are usually associated, and a popularity percentile range. The user can update their settings at any time.
+<img align="right" src='/eenie-meenie-fe/public/signin.png' width='250'><img align="right" src='/eenie-meenie-fe/public/settings.png' width='250'>Users can create a new account and login. The user is automatically prompted to enter their name preference settings. Specifically, they are asked to provide a year in which a set of names was popular, the gender with which the names are usually associated, and a popularity percentile range. The user can update their settings at any time.
 
-<img align="right" src='/eenie-meenie-fe/public/settings.png' width='250'>
-
-After submitting settings, the user is taking to the "play" page in which they are presented with two names. The user clicks on their preferred name is is presented with two more names for as long as they continue to choose. As the user chooses names from a pair, the user's name ranking is continually updated on the backend.
-
-<img align="left" src='/eenie-meenie-fe/public/play.png' width='250'>
+<img align="left" src='/eenie-meenie-fe/public/play.png' width='250'>After submitting settings, the user is taking to the "play" page in which they are presented with two names. The user clicks on their preferred name is is presented with two more names for as long as they continue to choose. As the user chooses names from a pair, the user's name ranking is continually updated on the backend.
 
 At any point the user can navigate to the favorites page to see their top-10 ranked names. On the favorites page, the user can remove any names they want to exclude from their list. These names will not show up again when playing unless the user updates their settings.
 
