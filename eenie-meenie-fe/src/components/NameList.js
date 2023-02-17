@@ -35,7 +35,7 @@ const NameList = ({ names, color = "teal.500", onClick }) => {
           </Flex>
         ))
       ) : (
-        <Text>No names ranked yet</Text>
+        <Text whiteSpace={"nowrap"}>No names ranked yet</Text>
       )}
     </Stack>
   );

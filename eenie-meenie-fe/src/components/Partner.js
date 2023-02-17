@@ -63,17 +63,19 @@ const Partner = () => {
             <NameList names={partner.name_ranking.slice(0, 10)} />
           )}
         </Stack>
-        <Stack>
-          <Heading fontSize={"2xl"} color={"gray.800"}>
-            You both love...
-          </Heading>
-          <NameList
-            names={partner.name_ranking
-              .filter((name) => favorites.includes(name))
-              .slice(0, 10)}
-            color={"purple.500"}
-          />
-        </Stack>
+        {partner.name_ranking.length ? (
+          <Stack>
+            <Heading fontSize={"2xl"} whiteSpace={"nowrap"} color={"gray.800"}>
+              You both love...
+            </Heading>
+            <NameList
+              names={partner.name_ranking
+                .filter((name) => favorites.includes(name))
+                .slice(0, 10)}
+              color={"purple.500"}
+            />
+          </Stack>
+        ) : null}
       </Flex>
     </Stack>
   );

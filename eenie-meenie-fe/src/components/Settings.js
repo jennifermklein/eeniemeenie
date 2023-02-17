@@ -32,7 +32,7 @@ const Settings = () => {
 
   const [fetching, setFetching] = useState(true);
   const [year, setYear] = useState("1985");
-  const [gender, setGender] = useState("N");
+  const [gender, setGender] = useState("F");
   const [popularityRange, setPopularityRange] = useState([70, 100]);
 
   const setSettings = (settings) => {
@@ -100,13 +100,7 @@ const Settings = () => {
           Enter settings
         </Heading>
       </Stack>
-      <Box
-        rounded={"lg"}
-        // bg={useColorModeValue("white", "gray.700")}
-        bg={"whiteAlpha.900"}
-        boxShadow={"lg"}
-        p={8}
-      >
+      <Box rounded={"lg"} bg={"whiteAlpha.900"} boxShadow={"lg"} p={8}>
         <Stack spacing={[2, 8]}>
           <Heading fontSize={["xl", "2xl"]} textAlign={"center"}>
             Show me...

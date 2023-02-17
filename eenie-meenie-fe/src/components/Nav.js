@@ -39,6 +39,8 @@ const Nav = ({ authenticated, setIsLoggedIn }) => {
           fontWeight={"bold"}
           color="teal.900"
           fontFamily={"monospace"}
+          as={"a"}
+          href={"/"}
         >
           <Text maxH={["1rem", "1.5rem"]} fontSize={["xl", "2xl", "3xl"]}>
             Eenie
@@ -51,6 +53,8 @@ const Nav = ({ authenticated, setIsLoggedIn }) => {
           fontWeight={"bold"}
           fontSize={["md", "lg", "xl"]}
           color="yellow.50"
+          as={"a"}
+          href={"/favorites"}
         >
           {username}
         </Text>

@@ -26,7 +26,7 @@ export default function ProtectedLayout() {
         minH={"90vh"}
         align={"center"}
         justify={"center"}
-        bg={useColorModeValue("white", "gray.700")}
+        bg={useColorModeValue("white", "gray.800")}
       >
         <Outlet />
       </Flex>
