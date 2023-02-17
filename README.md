@@ -25,7 +25,7 @@ To start the app:
 
 Eenie Meenie helps expecting parents choose a name for their baby.
 
-<img align="right" src='/eenie-meenie-fe/public/mobile.png' width='250'>The app was built with Django for the backend and React and Chakra for the frontend. Using React added complexity to the project because it required a separate server and integration between the front and backend that would have been automatic with Django and vanilla javascript. Chakra was helpful for easily creating nice looking and mobile-responsive components.
+<img align="right" src='/eenie-meenie-fe/public/mobile.png' width='200'>The app was built with Django for the backend and React and Chakra for the frontend. Using React added complexity to the project because it required a separate server and integration between the front and backend that would have been automatic with Django and vanilla javascript. Chakra was helpful for easily creating nice looking and mobile-responsive components.
 
 **Authentication**
 
@@ -41,7 +41,7 @@ The app uses naming data from the Social Security Administration going back to 1
 
 **Features**
 
-<img align="right" src='/eenie-meenie-fe/public/signin.png' width='250'>Users can create a new account and login. The user is automatically prompted to enter their name preference settings. Specifically, they are asked to provide a year in which a set of names was popular, the gender with which the names are usually associated, and a popularity percentile range. The user can update their settings at any time.
+<img align="left" src='/eenie-meenie-fe/public/signin.png' width='250'>Users can create a new account and login. The user is automatically prompted to enter their name preference settings. Specifically, they are asked to provide a year in which a set of names was popular, the gender with which the names are usually associated, and a popularity percentile range. The user can update their settings at any time.
 
 <img align="center" src='/eenie-meenie-fe/public/settings.png' width='250'>
 
