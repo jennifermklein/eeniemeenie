@@ -5,7 +5,7 @@ from django.contrib.postgres.fields import ArrayField
 # Create your models here.
 class User(AbstractUser):
     settings = models.ForeignKey('Setting', on_delete=models.CASCADE, null=True, blank=True, related_name='setter')
-    partner = models.OneToOneField('User', on_delete=models.CASCADE, null=True, blank=True, related_name='partnered_by')
+    partner = models.ForeignKey('User', on_delete=models.CASCADE, null=True, blank=True, related_name='partnered_by')
     name_pool = ArrayField(models.CharField(max_length=100), default=list)
     name_ranking = ArrayField(models.CharField(max_length=100), default=list)
 

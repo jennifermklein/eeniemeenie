@@ -7,7 +7,7 @@ To set up your environment:
 - activate a virtual environment and run `pip -install -r requirements.txt`
 - From within the eenie-meenie-fe directory, run `npm install`.
 
-Set up the database:
+To set up the database:
 
 - In psql, run `createdb eenie_meenie`
 
@@ -23,11 +23,11 @@ To start the app:
 
 Eenie Meenie helps expecting parents choose a name for their baby.
 
-The app was built with Djano for the backend and React for the frontend. Using React added complexity to the project because it required a separate server and integration between the front and backend that would have been automatic with Django and vanilla javascript.
+The app was built with Django for the backend and React for the frontend. Using React added complexity to the project because it required a separate server and integration between the front and backend that would have been automatic with Django and vanilla javascript.
 
 **Authentication**
 
-While the app uses some of Django's built in authentication features, I added token authentication and saved the token in local storage in the browser. I also had to figure out a good way to pass the token with each call to the Django API from the frontend. I did so by creating an axios instance with an interceptor which fetches the token from local storage and adds it to the api call header. In the backend, the API uses the token to fetch the appropriate user's data.
+While the app uses some of Django's built in authentication features, I added token authentication and saved the token in local storage in the browser. I also pass the token with each call to the Django API from the frontend. I did so by creating an axios instance with an interceptor which fetches the token from local storage and adds it to the API call header. In the backend, the API uses the token to fetch the appropriate user's data.
 
 **Database**
 
